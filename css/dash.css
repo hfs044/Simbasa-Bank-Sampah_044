@@ -1,0 +1,54 @@
+        body {
+            background: #f6f7fb;
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            background: white;
+            position: fixed;
+            border-right: 1px solid #ddd;
+            padding: 20px;
+            left: 0;
+            top: 0;
+            overflow-y: auto;
+        }
+
+        .sidebar a {
+            display: block;
+            margin: 12px 0;
+            font-size: 16px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            color: #0d6efd;
+        }
+
+        .main {
+            margin-left: 260px;
+            padding: 30px;
+        }
+
+        .saldo-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .riwayat-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .card {
+            border-radius: 12px;
+            border: none;
+            background: white;
+        }

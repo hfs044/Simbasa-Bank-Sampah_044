@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabungan Uang SIMBASA</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="img/logo.png">
+    <link href="css/tu.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <img src="img/simbada.png" alt="Logo SIMBASA" class="img-fluid mb-2"
+            style="width: 200px; height: auto; align-items: center;">
+        <a href="dash.html">Dashboard</a>
+        <a href="ts.html">Tabungan Sampah</a>
+        <a href="tu.html" class="fw-bold text-primary">Tabungan Uang</a>
+        <a href="rt.html">Riwayat Transaksi</a>
+        <a href="profile.html">Profil</a>
+        <hr>
+        <a href="index.html" class="text-danger">Log Out</a>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+        <h3 class="fw-bold mb-4">Tabungan Uang</h3>
+
+        <!-- SALDO -->
+        <div class="saldo-box mb-4" style="position: relative;">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="fw-bold">Saldo Tabungan Uang</h5>
+                    <h2 class="fw-bold text-primary mb-0">Rp 100.000</h2>
+                </div>
+
+                <!-- Tombol Form Penarikan -->
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalPenarikan">
+                    Form Penarikan
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- HISTORY PENARIKAN -->
+        <div class="riwayat-box mb-4">
+            <h5 class="fw-bold mb-3">History Penarikan</h5>
+
+            <div class="border-bottom pb-3 mb-3">
+                <strong>Penarikan Saldo</strong>
+                <span class="float-end text-danger">- Rp 20.000</span><br>
+                <small class="text-muted">05 November 2025</small>
+            </div>
+
+            <div>
+                <strong>Setor Sampah Plastik</strong>
+                <span class="float-end text-success">+ Rp 20.000</span><br>
+                <small class="text-muted">01 November 2025</small>
+            </div>
+        </div>
+
+        <!-- TRANSAKSI TERAKHIR -->
+        <div class="riwayat-box">
+            <div class="d-flex justify-content-between mb-3">
+                <h5 class="fw-bold">Transaksi Terakhir</h5>
+                <a href="rt.html" class="text-primary">Lihat Semua</a>
+            </div>
+
+            <div class="border-bottom pb-3 mb-3">
+                <strong>Penarikan Saldo</strong>
+                <span class="float-end text-danger">- Rp 20.000</span><br>
+                <small class="text-muted">05 November 2025</small>
+            </div>
+
+            <div>
+                <strong>Setor Sampah Plastik</strong>
+                <span class="float-end text-success">+ Rp 20.000</span><br>
+                <small class="text-muted">01 November 2025</small>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // SALDO CONTOH — nanti ambil dari backend
+        let saldoUser = 100000;
+
+        // Munculkan input nomor otomatis berdasarkan jenis penarikan
+        document.getElementById("jenisPenarikan").addEventListener("change", function () {
+            let jenis = this.value;
+            let wrap = document.getElementById("wrapNomor");
+            let label = document.getElementById("labelNomor");
+            let input = document.getElementById("inputNomor");
+
+            if (jenis === "tunai") {
+                wrap.style.display = "none"; // tunai tidak perlu nomor
+                return;
+            }
+
+            wrap.style.display = "block";
+            if (jenis === "dana") {
+                label.innerText = "Nomor DANA";
+                input.placeholder = "08xxxxxxxxxx";
+            }
+            else if (jenis === "ovo") {
+                label.innerText = "Nomor OVO";
+                input.placeholder = "08xxxxxxxxxx";
+            }
+            else if (jenis === "gopay") {
+                label.innerText = "Nomor GoPay";
+                input.placeholder = "08xxxxxxxxxx";
+            }
+            else if (jenis === "e-banking") {
+                label.innerText = "ID E-Banking";
+                input.placeholder = "ID / Username E-banking";
+            }
+            else if (jenis === "bank") {
+                label.innerText = "Nomor Rekening Bank";
+                input.placeholder = "Contoh: 1234567890";
+            }
+        });
+
+        // Validasi nominal tidak boleh lebih dari saldo
+        document.getElementById("nominal").addEventListener("input", function () {
+            let error = document.getElementById("errorNominal");
+
+            if (parseInt(this.value) > saldoUser) {
+                error.classList.remove("d-none");
+            } else {
+                error.classList.add("d-none");
+            }
+        });
+
+        // Submit form
+        document.getElementById("formPenarikan").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            let nominal = parseInt(document.getElementById("nominal").value);
+            let error = document.getElementById("errorNominal");
+
+            if (nominal > saldoUser) {
+                error.classList.remove("d-none");
+                return;
+            }
+
+            alert("Penarikan berhasil dikirim!");
+        });
+    </script>
+
+    <!-- Modal Form Penarikan -->
+    <div class="modal fade" id="modalPenarikan" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Form Penarikan Saldo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form id="formPenarikan">
+
+                        <!-- Jenis Penarikan -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Jenis Penarikan</label>
+                            <select id="jenisPenarikan" class="form-select" required>
+                                <option value="" selected disabled>Pilih jenis penarikan</option>
+                                <option value="dana">DANA</option>
+                                <option value="ovo">OVO</option>
+                                <option value="gopay">GoPay</option>
+                                <option value="e-banking">E-Banking</option>
+                                <option value="bank">Transfer Bank</option>
+                                <option value="tunai">Tunai</option>
+                            </select>
+                        </div>
+
+                        <!-- Input nomor rekening / e-wallet (tampil otomatis) -->
+                        <div class="mb-3" id="wrapNomor" style="display:none;">
+                            <label id="labelNomor" class="form-label fw-bold"></label>
+                            <input type="text" id="inputNomor" class="form-control" placeholder="">
+                        </div>
+
+                        <!-- Nominal -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Nominal Penarikan</label>
+                            <input type="number" id="nominal" class="form-control" placeholder="Masukkan nominal"
+                                required>
+                            <small class="text-danger d-none" id="errorNominal">Nominal melebihi saldo!</small>
+                        </div>
+
+                        <!-- Keterangan -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Keterangan</label>
+                            <input type="text" id="keterangan" class="form-control" placeholder="Opsional">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Kirim Penarikan</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

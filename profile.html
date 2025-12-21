@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil SIMBASA</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="img/logo.png">
+    <link href="css/profile.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <img src="img/simbada.png" alt="Logo SIMBASA" class="img-fluid mb-2"
+            style="width: 200px; height: auto; align-items: center;">
+        <a href="dash.html">Dashboard</a>
+        <a href="ts.html">Tabungan Sampah</a>
+        <a href="tu.html">Tabungan Uang</a>
+        <a href="rt.html">Riwayat Transaksi</a>
+        <a href="profile.html" class="fw-bold text-primary">Profil</a>
+        <hr>
+        <a href="index.html" class="text-danger">Log Out</a>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+        <h3 class="fw-bold mb-4">Profil Pengguna</h3>
+
+        <!-- PROFILE CARD -->
+        <div class="profile-card mb-4 d-flex align-items-center gap-3">
+            <img src="img/me.jpg" alt="Foto Profil" class="profile-img">
+            <div>
+                <h5 class="fw-bold mb-1">Adhimaz Surya</h5>
+                <p class="text-muted mb-0">ID: 00101</p>
+            </div>
+        </div>
+
+        <!-- INFORMASI PRIBADI -->
+        <div class="profile-section">
+            <h6 class="fw-bold mb-3">Informasi Pribadi</h6>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Nama Lengkap</label>
+                    <input type="text" class="form-control" value="Adhimaz Surya">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" value="adhimaz@example.com">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="form-label">Nomor Telepon</label>
+                    <input type="text" class="form-control" value="081234567890">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Alamat</label>
+                    <input type="text" class="form-control" value="Jalan Contoh No. 12">
+                </div>
+            </div>
+
+            <!-- Tombol Save -->
+            <div class="text-end mt-3">
+                <button class="btn btn-success px-4">Save</button>
+            </div>
+        </div>
+
+        <!-- KEAMANAN -->
+        <div class="profile-section">
+            <h6 class="fw-bold mb-3">Keamanan</h6>
+
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control mb-2" value="**********">
+            <button class="btn btn-primary mt-2">Ganti Password</button>
+        </div>
+
+        <!-- BAHASA -->
+        <div class="profile-section">
+            <h6 class="fw-bold mb-3">Bahasa</h6>
+
+            <select class="form-select">
+                <option>Indonesia</option>
+                <option>English</option>
+            </select>
+        </div>
+
+        <!-- BANTUAN -->
+        <div class="profile-section">
+            <h6 class="fw-bold mb-2">Bantuan</h6>
+
+            <p class="text-muted">Hubungi admin bila membutuhkan bantuan atau mengalami kendala.</p>
+            <button class="btn btn-outline-primary">Hubungi Admin</button>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
